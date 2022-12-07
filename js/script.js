@@ -29,7 +29,7 @@ var questions = [
     ],
   },
   {
-    question: "What is an array used for is JS?",
+    question: "What is an array used for in JavaScript?",
     answer: "To store multiple values in a single variable",
     options: [
       "To hold a single object",
@@ -39,15 +39,40 @@ var questions = [
   },
 ];
 var currentIndex = 0
+var timer = document.getElementById("timer");
+var timeLeft = document.getElementById("timeLeft");
+var timesUp = document.getElementById("timesUp");
 
-function countdown(){
-  console.log("timer")
-}
+var totalTime = 151;
+function newQuiz() {
+    questionIndex = 0;
+    totalTime = 150;
+    timeLeft.textContent = totalTime;
+    initialInput.textContent = "";
+
+    start.style.display = "none";
+    questions.style.display = "block";
+    timer.style.display = "block";
+    timesUp.style.display = "none";
+
+    var startTimer = setInterval(function() {
+        totalTime--;
+        timeLeft.textContent = totalTime;
+        if(totalTime <= 0) {
+            clearInterval(startTimer);
+            if (questionIndex < questions.length - 1) {
+                gameOver();
+            }
+        }
+    },1000);
+
+    showQuiz();
+};
 
 function startQuiz(event){
     event.preventDefault()
     console.log("Hey")
-    // we must initate our countdow
+    // we must initate our countdown
     countdown()
     var startScreen = document.getElementById('start-screen')
     startScreen.classList.add("hide")
