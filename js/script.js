@@ -73,7 +73,7 @@ function startQuiz(event){
     event.preventDefault()
     console.log("Hey")
     // we must initate our countdown
-    countdown()
+    newQuiz()
     var startScreen = document.getElementById('start-screen')
     startScreen.classList.add("hide")
     var quizScreen = document.getElementById('questions')
